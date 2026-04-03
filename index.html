@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="heart-bg"></div>
+
+    <button id="music-toggle" class="music-btn">
+        <span id="music-icon">🎵</span>
+    </button>
+    <audio id="bg-audio" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="welcome" class="screen active">
+        <div class="card">
+            <div class="emoji-heart">❤️</div>
+            <h1 class="title">Hey Bhaluu!</h1>
+            <p class="subtitle">I just made this for you because you mean everything to me.</p>
+            <button class="btn-main" onclick="navTo('menu')">Open Your Gift 🎁</button>
+        </div>
+    </section>
+
+    <section id="menu" class="screen">
+        <div class="card">
+            <h1 class="title">Choose an envelope</h1>
+            <p class="subtitle">Explore the little things I love about us.</p>
+            <div class="grid-menu">
+                <div class="grid-item" onclick="navTo('memories')">
+                    <div class="icon">🖼️</div>
+                    <p>Our Memories</p>
+                </div>
+                <div class="grid-item" onclick="navTo('letter')">
+                    <div class="icon">💌</div>
+                    <p>My Letter</p>
+                </div>
+                <div class="grid-item" onclick="navTo('reasons')">
+                    <div class="icon">❤️</div>
+                    <p>Why I Love You</p>
+                </div>
+                <div class="grid-item" onclick="navTo('date')">
+                    <div class="icon">📅</div>
+                    <p>Date Night?</p>
+                </div>
+            </div>
+            <button class="btn-back" onclick="navTo('welcome')">Back</button>
+        </div>
+    </section>
+
+    <section id="memories" class="screen">
+        <div class="card wide-card">
+            <h1 class="title glitch-text">Our Best Moments</h1>
+            <p class="subtitle">Click on an image to see it clearly.</p>
+            <div class="memories-grid">
+                <div class="memory-img glitch" onclick="zoom(this)"><img src="IMG_7391.JPG.jpeg" alt=""></div>
+                <div class="memory-img glitch" onclick="zoom(this)"><img src="IMG_7686.JPG.jpeg" alt=""></div>
+                <div class="memory-img glitch" onclick="zoom(this)"><img src="IMG_20260321_110257.jpg.jpeg" alt=""></div>
+                <div class="memory-img glitch" onclick="zoom(this)"><img src="IMG_20260322_124403.jpg.jpeg" alt=""></div>
+                <div class="memory-img glitch" onclick="zoom(this)"><img src="Screenshot_2026-03-22-20-09-08-183_com.miui.mediaviewer-edit.jpg.jpeg" alt=""></div>
+                <div class="memory-img glitch" onclick="zoom(this)"><img src="Screenshot_2026-03-23-15-36-00-032_cc.honista.app-edit.jpg.jpeg" alt=""></div>
+            </div>
+            <button class="btn-back" onclick="navTo('menu')">Back to Menu</button>
+        </div>
+    </section>
+
+    <section id="reasons" class="screen">
+        <div class="card">
+            <h1 class="title">Why I Love You</h1>
+            <div class="reasons-list">
+                <div class="reason-item"><span>✓</span> You make my bad days softer and my good days brighter.</div>
+                <div class="reason-item"><span>✓</span> You listen — really listen — and that means everything.</div>
+                <div class="reason-item"><span>✓</span> You’re my calm and my chaos at the same time.</div>
+                <div class="reason-item"><span>✓</span> You support my dreams like they’re your own.</div>
+                <div class="reason-item"><span>✓</span> Being with you feels like home.</div>
+            </div>
+            <button class="btn-back" onclick="navTo('menu')">Back to Menu</button>
+        </div>
+    </section>
+
+    <section id="letter" class="screen">
+        <div class="card">
+            <h1 class="title">To MY AII TOO BHALUU 💌</h1>
+            <div class="letter-body">
+                <p id="letter-text"></p>
+                <p class="sig">I LOVE YOU SOO MUCH,<br>BACCHA</p>
+            </div>
+            <button class="btn-back" onclick="navTo('menu')">Back to Menu</button>
+        </div>
+    </section>
+
+    <section id="date" class="screen">
+        <div class="card">
+            <h1 class="title">MERA PYARA BACCHA...</h1>
+            <p>SORRY AAJ KE LIYE JO MAIN GUSSA HUA MUJHE NHI KARNA CHAHIYE THA. MUJHE YEH REALISE HO GAYA THA KI MAINE BHUT GALAT KIYA HAI PHONE NA UTHA KAR, BUT KYA HUM YEH BAATEIN BHUL KAR AAJ MOVIE NIGHT PAR CHAL SAKTE HAI?? 🥹</p>
+            <div class="date-details">
+                <div class="date-icon">🍴🍿</div>
+                <h3>Movie night</h3>
+            </div>
+            <button class="btn-main" onclick="sayYes()">Yes, I'd love to!</button>
+            <button class="btn-back" onclick="navTo('menu')">Back</button>
+        </div>
+    </section>
+
+    <!-- Welcome Popup -->
+    <div id="welcome-popup" class="popup">
+        <div class="popup-content">
+            <div class="popup-emoji">💖</div>
+            <h2>Welcome to Your Surprise!</h2>
+            <p>Click anywhere to start your journey...</p>
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="popup-emoji">🎉❤️</div>
+            <h2>Yay! It's a date!</h2>
+            <p>I can't wait to spend this special time with you, my love! 💕</p>
+            <button class="popup-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
